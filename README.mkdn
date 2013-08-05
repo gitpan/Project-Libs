@@ -9,7 +9,7 @@ automatically
     use Project::Libs;
 
     # add more other dirs into @INC
-    use Project::Libs lib_dirs => [qw(extlib vendor)];
+    use Project::Libs lib_dirs => [qw(extlib vendor modules/*/lib)];
 
     # add more other marks locate on a project root
     use Project::Libs project_root_files => [qw(README Changes)];
@@ -20,8 +20,8 @@ Project::Libs automatically adds directories that may contain modules
 which a project depends on.
 
 Imagin there's such a project as below: CPAN-standard file arrangement
-and using git as a SCM (`modules' directory contains git submodules
-and that's written in `.gitmodules').
+and using git as a SCM (\`modules' directory contains git submodules
+and that's written in \`.gitmodules').
 
     |_ PROJECT_ROOT
        |_ .git
@@ -44,26 +44,22 @@ and that's written in `.gitmodules').
           |_ ...
 
 You may bother writing such code as below in all the script located in
-t/*, script/*, or other to add module path into @INC.
+t/\*, script/\*, or other to add module path into @INC.
 
     use FindBin;
     use lib "$FindBin::Bin/../lib";
     use lib glob "$FindBin::Bin/../modules/*/lib";
 
-To `use Project::Libs' helps you doing that.
+To \`use Project::Libs' helps you doing that.
 
 In this case, after loading this module, the directories below are
 added into @INC:
 
-- * lib
-
-- * extlib
-
-- * t/lib
-
-- * modules/Foo/lib
-
-- * modules/Bar/lib
+- lib
+- extlib
+- t/lib
+- modules/Foo/lib
+- modules/Bar/lib
 
 # AUTHOR
 

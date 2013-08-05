@@ -25,3 +25,5 @@ t/compile.t
 t/extlib/.gitkeeep
 t/find_inc.t
 t/lib/.gitkeeep
+t/modules/DBI/lib/.gitkeep
+t/modules/DBIx-Sunny/lib/.gitkeep
